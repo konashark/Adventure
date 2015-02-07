@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'chancery';
+    src: url('fonts/AppleChancery.ttf');
+}
+
+#screen {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    color: #fff;
+    font-family: Apple Chancery;
+    font-size:16pt;
+    overflow:hidden;
+}
+
+.window {
+    position: absolute;
+    background-color: #900;
+    overflow:hidden;
+}
+
+#bannerWin {
+    background-color: #005;
+    color: #ED4;
+    font-size:32pt;
+    left: 0px;
+    top: 0px;
+    width: 992px;
+    height: 96px;
+    padding-top: 12px;
+    padding-left: 32px;
+}
+
+#dayElem {
+    font-size:16pt;
+    color: #ED4;
+    left: 725px;
+    top: 5px;
+    width: 200px;
+    height: 30px;
+}
+
+#menElem {
+    font-size:14pt;
+    color: #EEE;
+    left: 725px;
+    top: 35px;
+    width: 150px;
+    height: 30px;
+}
+
+#goldElem {
+    font-size:14pt;
+    color: #EEE;
+    left: 875px;
+    top: 35px;
+    width: 100px;
+    height: 30px;
+}
+
+#strengthElem {
+    font-size:14pt;
+    color: #EEE;
+    left: 725px;
+    top: 60px;
+    width: 150px;
+    height: 30px;
+}
+
+#charismaElem {
+    font-size:14pt;
+    color: #EEE;
+    left: 875px;
+    top: 60px;
+    width: 100px;
+    height: 30px;
+}
+
+#navigatorWin {
+    background-color: #040;
+    left: 0%;
+    top: 96px;
+    width: 704px;
+    height: 416px;
+}
+
+#mapCanvas {
+    background-color: #440;
+    left:64px;
+    top:48px;
+    width:576px;
+    height:320px;
+}
+
+#inventoryWin {
+    background-color: #044;
+    left:705px;
+    top:96px;
+    width:319px;
+    height:416px;
+}
+
+#inventoryViewPort {
+    left: 20px;
+    top: 41px;
+    width: 280px;
+    height: 334px;
+    overflow: hidden;
+}
+
+#inventorySurface {
+    width: 280px;
+    height: 900px;
+    font-size:14pt;
+}
+
+.inventoryCell {
+    position: relative;
+    background-color: #482008;
+    color: #ffdd88;
+    width: 298px;
+    height: 35px;
+    display: block;
+    border: 1px solid #662810;
+}
+
+.inventoryCellLabel {
+    top: 2px;
+    left: 60px;
+}
+
+.inventoryCellQuan {
+    color: #FEE;
+    top: 2px;
+    left: 205px;
+}
+
+#capacityElem {
+    color: #EEE;
+    font-size:12pt;
+    left:20px;
+    top:5px;
+    width:100px;
+    height:20px;
+}
+
+#loadElem {
+    color: #EEE;
+    font-size:12pt;
+    left:170px;
+    top:5px;
+    width:100px;
+    height:20px;
+}
+
+#consoleWin {
+    background-color: #404;
+    left: 0px;
+    top: 503px;
+    width: 1024px;
+    height: 96px;
+}
+
+#console {
+    background-color: #404;
+    left: 32px;
+    top: 4px;
+    width: 960px;
+    height: 88px;
+}
+
+#inputBox {
+    background-color: transparent;
+    font-size:13pt;
+    color: #FE4;
+    outline: none;
+}
