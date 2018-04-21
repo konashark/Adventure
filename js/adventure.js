@@ -63,16 +63,16 @@ function mapKeyHandler(key) {
             updateTime();
             break;
         case 40:
-            //moveMap(0, +2, 32);
+            moveMap(0, +2, 32);
             updateTime();
-            marketplace();
+            //marketplace();
             break;
     }
 }
 
 //***********************************************
 function inputChar(prompt, callback) {
-    jgl.slowType(g.consoleElem, prompt, 8, function() {
+    jgl.slowType(g.console, prompt, 8, function() {
         g.keyCallback = function(key) {
             callback(key);
             g.keyCallback = null;
@@ -82,10 +82,10 @@ function inputChar(prompt, callback) {
 
 //***********************************************
 function inputString(prompt, callback) {
-    jgl.slowType(g.consoleElem, prompt, 8, function() {
+    jgl.slowType(g.console, prompt, 8, function() {
         var str;
         g.inputElem = jgl.createElement({
-            parent: g.consoleElem,
+            parent: g.console,
             position: 'relative',
             type: 'input',
             id:'inputBox'
@@ -93,12 +93,12 @@ function inputString(prompt, callback) {
         g.inputElem.onchange = function() {
             str = g.inputElem.value;
             g.inputElem.onchange = undefined;
-            g.consoleElem.innerHTML = "";
+            g.console.innerHTML = "";
             console.log("Got string '" + str + "'");
             if (callback){
                 callback(str);
             }
-        }
+        };
         g.inputElem.focus();
     });
 }
@@ -111,13 +111,19 @@ function moveMap(xd, yd, frames) {
             g.y += yd;
             g.x += xd;
             g.map.drawMap(g.x, g.y);
+            g.mapContext.fillStyle = "#DD8800";
+            g.mapContext.fillRect(224 - 10, 160 - 10, 20, 20);
             requestAnimFrame(animLoop);
+        } else {
+//            g.mapContext.fillStyle = "#DD8800";
+//            g.mapContext.fillRect(224 - 10, 160 - 10, 20, 20);
         }
     }
     animLoop();
+
     var tile = g.terrain[g.map.tileAt(g.x, g.y)];
     if (tile && tile.type) {
-        jgl.slowType(g.consoleElem, "You are in the " + tile.type, 8);
+        jgl.slowType(g.console, "You are in the " + tile.type, 8);
     }
 }
 
@@ -149,10 +155,10 @@ function marketplace(){
         inputString("What do you offer for our fine " + item + "s? ", function(str){
 
             if (offer <= insult){
-                jgl.slowType(g.consoleElem, "That offer is an insult! The item is no longer for sale", 8);
+                jgl.slowType(g.console, "That offer is an insult! The item is no longer for sale", 8);
                 result = "insult";
             } else if (offer <= lastOffer) {
-                jgl.slowType(g.consoleElem, "You offered more last time! Good day, sir.", 8);
+                jgl.slowType(g.console, "You offered more last time! Good day, sir.", 8);
                 result = "quit";
             } else if (offer >= (counter - 1)){
                 inputString("At " + offer + " how many " + item + "s would you like? ", function(str){
