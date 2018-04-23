@@ -2,161 +2,31 @@ var jgl = null;
 var g = {
     map: null,
     img: [],
-    x: 0,
-    y: 0,
+    x: 40 * 64,
+    y: 30 * 64,
     terrainType: 2,
     keyCallback: null,
     mode: 'map',
     characters:[
-        {type:'Men',        desc:'a group of ',     str:1, agg:0, singular:false, img:null},
-        {type:'Minstral',   desc:'a wandering ',    str:0, agg:0, singular:true, img:null},
-        {type:'Merchant',   desc:'a traveling ',    str:1, agg:0, singular:true, img:null},
-        {type:'Orcs',       desc:'a band of ',      str:4, agg:5, singular:false, img:null},
-        {type:'Goblins',    desc:'a group of ',     str:3, agg:3, singular:false, img:null},
-        {type:'Dwarfs',     desc:'a gathering of ', str:3, agg:2, singular:false, img:null},
-        {type:'Harpies',    desc:'a flock of ',     str:3, agg:4, singular:false, img:null},
-        {type:'Gypsies',    desc:'a caravan of ',   str:2, agg:2, singular:false, img:null},
-        {type:'Bandits',    desc:'a gang of ',      str:3, agg:4, singular:false, img:null},
-        {type:'Trolls',     desc:'a den of ',       str:4, agg:3, singular:false, img:null},
-        {type:'Wizard',     desc:'a magical ',      str:5, agg:2, singular:true, img:null},
-        {type:'Cleric',     desc:'a wandering ',    str:1, agg:0, singular:true, img:null},
-        {type:'Dragon',     desc:'a ferocious ',    str:5, agg:4, singular:true, img:null}
+        { type: 'Men',        desc: 'a group of ',      str: 1, agg: 0, singular: false, img: undefined },
+        { type: 'Minstral',   desc: 'a wandering ',     str: 0, agg: 0, singular: true,  img: undefined },
+        { type: 'Merchant',   desc: 'a traveling ',     str: 1, agg: 0, singular: true,  img: undefined },
+        { type: 'Orcs',       desc: 'a band of ',       str: 4, agg: 5, singular: false, img: undefined },
+        { type: 'Goblins',    desc: 'a group of ',      str: 3, agg: 3, singular: false, img: undefined },
+        { type: 'Dwarfs',     desc: 'a gathering of ',  str: 3, agg: 2, singular: false, img: undefined },
+        { type: 'Harpies',    desc: 'a flock of ',      str: 3, agg: 4, singular: false, img: undefined },
+        { type: 'Gypsies',    desc: 'a caravan of ',    str: 2, agg: 2, singular: false, img: undefined },
+        { type: 'Bandits',    desc: 'a gang of ',       str: 3, agg: 4, singular: false, img: undefined },
+        { type: 'Trolls',     desc: 'a den of ',        str: 4, agg: 3, singular: false, img: undefined },
+        { type: 'Wizard',     desc: 'a magical ',       str: 5, agg: 2, singular: true,  img: undefined },
+        { type: 'Enchantress',desc: 'a mystical ',      str: 5, agg: 2, singular: true,  img: undefined },
+        { type: 'Hag',        desc: 'an old ',          str: 5, agg: 2, singular: true,  img: undefined },
+        { type: 'Cleric',     desc: 'a wandering ',     str: 1, agg: 0, singular: true,  img: undefined },
+        { type: 'Dragon',     desc: 'a ferocious ',     str: 5, agg: 4, singular: true,  img: undefined }
     ],
-    SEA: 0,
-    SEA2: 1,
-    MEADOW: 2,
-    MEADOW2: 3,
-    MEADOW3: 4,
-    FOREST: 5,
-    FOREST2: 6,
-    FOREST3: 7,
-    SWAMP: 8,
-    MOUNTAIN: 9,
-    MOUNTAIN2: 10,
-    CAVE: 11,
-    SHORE: 12,
-    SHORE2: 13,
-    SHORE3: 14,
-    SHORE4: 15,
-    SHORE5: 16,
-    TOWN: 17,
-    TOWN2: 18,
-    TOWN3: 19,
-    TOWN4: 20,
-    CASTLE: 21,
-    CASTLE2: 22,
-    CASTLE3: 23,
-    CASTLE4: 24,
-    SHACK: 25,
-    RUINS: 26,
-    TEMPLE: 27,
-    STREAM: 28,
-    STREAM2: 29,
-    STREAM3: 30,
-    STREAM4: 31,
-    STREAM5: 32,
-    STREAM6: 33,
-    ROAD: 34,
-    ROAD2: 35,
-    ROAD3: 36,
-    ROAD4: 37,
-    ROAD5: 38,
-    ROAD6: 39,
-    ROAD7: 40,
-    ROAD8: 41,
-    ROAD9: 42,
-    ROAD10: 43,
-    ROAD11: 44,
-    terrain:[
-        {type:"sea", img:null},
-        {type:"sea", img:null},
-        {type:"meadow", img:null},
-        {type:"meadow", img:null},
-        {type:"meadow", img:null},
-        {type:"forest", img:null},
-        {type:"forest", img:null},
-        {type:"forest", img:null},
-        {type:"swamp", img:null},
-        {type:"mountain", img:null},
-        {type:"mountain", img:null},
-        {type:"cave", img:null},
-        {type:"shore", img:null},
-        {type:"shore", img:null},
-        {type:"shore", img:null},
-        {type:"shore", img:null},
-        {type:"shore", img:null},
-        {type:"town", img:null},
-        {type:"town", img:null},
-        {type:"town", img:null},
-        {type:"town", img:null},
-        {type:"castle", img:null},
-        {type:"castle", img:null},
-        {type:"castle", img:null},
-        {type:"castle", img:null},
-        {type:"shack", img:null},
-        {type:"ruins", img:null},
-        {type:"temple", img:null},
-        {type:"stream", img:null},
-        {type:"stream", img:null},
-        {type:"stream", img:null},
-        {type:"stream", img:null},
-        {type:"stream", img:null},
-        {type:"stream", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null},
-        {type:"road", img:null}
-    ],
-    goods:[
-        {type:'Gold',       img:null, price:1,   weight:0.05, str:0, quan:500},
-        {type:'Food Packet',img:null, price:8,   weight:1, str:0, quan:5},
-        {type:'Canteen',    img:null, price:14,  weight:2, str:0, quan:2},
-        {type:'Ale',        img:null, price:12,  weight:2, str:0, quan:0},
-        {type:'Medicine',   img:null, price:75,  weight:1, str:0, quan:0},
-        {type:'Lantern',    img:null, price:40,  weight:6, str:0, quan:0},
-        {type:'Rope',       img:null, price:45,  weight:8, str:0, quan:0},
-        {type:'Axe',        img:null, price:60,  weight:15, str:4, quan:0},
-        {type:'Shovel',     img:null, price:35,  weight:12, str:2, quan:0},
-        {type:'Map',        img:null, price:100, weight:1, str:0, quan:0},
-        {type:'Spell',      img:null, price:75,  weight:1, str:0, quan:0},
-        {type:'Gems',       img:null, price:100, weight:1, str:0, quan:0},
-        {type:'Lute',       img:null, price:20,  weight:3, str:0, quan:0},
-        {type:'Leathers',   img:null, price:35,  weight:8, str:4, quan:0},
-        {type:'Chain Mail', img:null, price:75,  weight:15, str:10, quan:0},
-        {type:'Dagger',     img:null, price:30,  weight:5, str:3, quan:0},
-        {type:'Sword',      img:null, price:60,  weight:10, str:10, quan:0},
-        {type:'Long Bow',   img:null, price:50,  weight:10, str:8, quan:0},
-        {type:'Shield',     img:null, price:25,  weight:5, str:4, quan:0},
-        {type:'Donkey',     img:null, price:150, weight:0, str:0, quan:0},
-        {type:'Mercenary',  img:null, price:50,  weight:0, str:10, quan:1}
-    ],
-    GOLD: 0,
-    FOOD: 1,
-    ALE: 3,
-    MEDICINE: 4,
-    LANTERN: 5,
-    ROPE: 6,
-    AXE: 7,
-    SHOVEL: 8,
-    MAP: 9,
-    SPELL: 10,
-    GEMS: 11,
-    LUTE: 12,
-    LEATHERS: 13,
-    CHAINMAIL: 14,
-    DAGGER: 15,
-    SWORD: 16,
-    LONGBOW: 17,
-    SHIELD: 18,
-    DONKEY: 19,
-    MERCENARY: 20,
+    terrain:[],
+    goods:[],
+    inventory: [],
     capacity: 0,
     load: 0,
     strength: 0,
@@ -165,3 +35,68 @@ var g = {
     quarterHour: 0
 };
 
+g.terrain['SEA0']       = { type: 'sea',       img: undefined };
+g.terrain['SEA1']       = { type: 'sea',       img: undefined };
+g.terrain['SEA2']       = { type: 'sea',       img: undefined };
+g.terrain['MEADOW0']    = { type: 'meadow',    img: undefined };
+g.terrain['MEADOW1']    = { type: 'meadow',    img: undefined };
+g.terrain['MEADOW2']    = { type: 'meadow',    img: undefined };
+g.terrain['FOREST0']    = { type: 'forest',    img: undefined };
+g.terrain['FOREST1']    = { type: 'forest',    img: undefined };
+g.terrain['FOREST2']    = { type: 'forest',    img: undefined };
+g.terrain['SWAMP0']     = { type: 'swamp',     img: undefined };
+g.terrain['SWAMP1']     = { type: 'swamp',     img: undefined };
+g.terrain['SWAMP2']     = { type: 'swamp',     img: undefined };
+g.terrain['MOUNTAIN0']  = { type: 'mountain',  img: undefined };
+g.terrain['MOUNTAIN1']  = { type: 'mountain',  img: undefined };
+g.terrain['MOUNTAIN2']  = { type: 'mountain',  img: undefined };
+g.terrain['CAVE']       = { type:' cave',      img: undefined };
+g.terrain['ROCK']       = { type:' rock',      img: undefined };
+g.terrain['SHORE0']     = { type:' shore',     img: undefined };
+g.terrain['SHORE1']     = { type:' shore',     img: undefined };
+g.terrain['SHORE2']     = { type:' shore',     img: undefined };
+g.terrain['DESERT0']    = { type:' desert',    img: undefined };
+g.terrain['DESERT1']    = { type:' desert',    img: undefined };
+g.terrain['DESERT2']    = { type:' desert',    img: undefined };
+g.terrain['STREAM0']    = { type:' stream',    img: undefined };
+g.terrain['STREAM1']    = { type:' stream',    img: undefined };
+g.terrain['STREAM2']    = { type:' stream',    img: undefined };
+
+g.terrain['TOWN']       = { type: 'town',      img: undefined };
+g.terrain['CASTLE']     = { type: 'castle',    img: undefined };
+g.terrain['SHACK']      = { type: 'shack',     img: undefined };
+g.terrain['RUINS']      = { type: 'ruins',     img: undefined };
+g.terrain['TEMPLE']     = { type: 'temple',    img: undefined };
+
+g.goods['GOLD']         = { type: 'Gold',      img: undefined, price:1,   weight:0.05, str:0,quan:500};
+g.goods['FOOD']         = { type: 'Food Packet',img: undefined, price:8,   weight:1,  str:0,  quan:5};
+g.goods['CANTEEN']      = { type: 'Canteen',   img: undefined, price:14,  weight:2,  str:0,  quan:2};
+g.goods['ALE']          = { type: 'Ale',       img: undefined, price:12,  weight:2,  str:0,  quan:0};
+g.goods['MEDICINE']     = { type: 'Medicine',  img: undefined, price:75,  weight:1,  str:0,  quan:0};
+g.goods['LANTERN']      = { type: 'Lantern',   img: undefined, price:40,  weight:6,  str:0,  quan:0};
+g.goods['ROPE']         = { type: 'Rope',      img: undefined, price:45,  weight:8,  str:0,  quan:0};
+g.goods['AXE']          = { type: 'Axe',       img: undefined, price:60,  weight:15, str:4,  quan:0};
+g.goods['SHOVEL']       = { type: 'Shovel',    img: undefined, price:35,  weight:12, str:2,  quan:0};
+g.goods['MAP']          = { type: 'Map',       img: undefined, price:100, weight:1,  str:0,  quan:0};
+g.goods['SPELL']        = { type: 'Spell',     img: undefined, price:75,  weight:1,  str:0,  quan:0};
+g.goods['MAGIC KEY']    = { type: 'Magic Key', img: undefined, price:500, weight:1,  str:0,  quan:0};
+g.goods['GEMS']         = { type: 'Gems',      img: undefined, price:100, weight:1,  str:0,  quan:0};
+g.goods['LUTE']         = { type: 'Lute',      img: undefined, price:20,  weight:3,  str:0,  quan:0};
+g.goods['LEATHERS']     = { type: 'Leathers',  img: undefined, price:35,  weight:8,  str:4,  quan:0};
+g.goods['CHAIN MAIL']   = { type: 'Chain Mail',img: undefined, price:75,  weight:15, str:10, quan:0};
+g.goods['DAGGER']       = { type: 'Dagger',    img: undefined, price:30,  weight:5,  str:3,  quan:0};
+g.goods['BROAD SWORD']  = { type: 'Sword',     img: undefined, price:60,  weight:10, str:10, quan:0};
+g.goods['LONG BOW']     = { type: 'Long Bow',  img: undefined, price:50,  weight:10, str:8,  quan:0};
+g.goods['SHIELD']       = { type: 'Shield',    img: undefined, price:25,  weight:5,  str:4,  quan:0};
+g.goods['SMALL BOAT']   = { type: 'Small Boat',img: undefined, price:250, weight:5,  str:4,  quan:0};
+g.goods['SHIP']         = { type: 'Ship',      img: undefined, price:2250,weight:5,  str:4,  quan:0};
+g.goods['DONKEY']       = { type: 'Donkey',    img: undefined, price:150, weight:0,  str:0,  quan:0};
+g.goods['MERCENARY']    = { type: 'Mercenary', img: undefined, price:50,  weight:0,  str:10, quan:1};
+
+for (var key in g.goods) {
+    g.inventory[key] = g.goods[key];
+};
+g.inventory['GOLD'].quan = 1000;
+g.inventory['FOOD'].quan = 5;
+g.inventory['CANTEEN'].quan = 2;
+g.inventory['MERCENARY'].quan = 1;

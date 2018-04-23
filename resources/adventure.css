@@ -29,7 +29,7 @@ body {
     position: relative;
     top: 0px;
     width: 1000px;
-    height: 625px;
+    height: 634px;
     background-color: #321000;
     background: url('../resources/images/wood.png');
     background-size: cover;
@@ -92,7 +92,7 @@ body {
     position: absolute;
     font-size:14pt;
     color: #EEE;
-    left: 700px;
+    left: 715px;
     top: 40px;
     height: 30px;
     text-shadow: 1px 1px #000000;
@@ -102,7 +102,7 @@ body {
     position: absolute;
     font-size:14pt;
     color: #EEE;
-    left: 820px;
+    left: 835px;
     top: 40px;
     height: 30px;
     text-shadow: 1px 1px #000000;
@@ -110,9 +110,9 @@ body {
 
 #bannerWin>#strength {
     position: absolute;
-    font-size:14pt;
+    font-size: 14pt;
     color: #EEE;
-    left: 700px;
+    left: 715px;
     top: 65px;
     height: 30px;
     text-shadow: 1px 1px #000000;
@@ -122,7 +122,7 @@ body {
     position: absolute;
     font-size:14pt;
     color: #EEE;
-    left: 820px;
+    left: 835px;
     top: 65px;
     height: 30px;
     text-shadow: 1px 1px #000000;
@@ -132,7 +132,7 @@ body {
     position: relative;
     width: 1118px;
     height: 320px;
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 0;
 }
 
@@ -146,37 +146,45 @@ body {
 #mapCanvas {
     position: absolute;
     background-color: #440;
-    left:14px;
-    top:0px;
-    width:448px;
-    height:320px;
-    border: outset 4px #0044cc;
+    left: 14px;
+    top: 0px;
+    width: 448px;
+    height: 320px;
+    border: outset 4px #0033aa;
 }
 
 #islandMapWin {
     position: absolute;
     background-color: #02a;
     background: url('../resources/images/islandmap.png');
-    overflow-y: auto;
     top: 0px;
     left: 476px;
     width: 500px;
     height: 320px;
-    border: outset 4px #0044cc;
+}
+
+#parchmentCanvas {
+    position: absolute;
+//    background: url('../resources/images/parchment.png');
+    top: 0px;
+    left: 476px;
+    width: 500px;
+    height: 320px;
+    opacity: 0.8
 }
 
 #capacityElem {
     position: absolute;
-    font-size:12pt;
+    font-size: 12pt;
     left: 10px;
     top: 0px;
 }
 
 #loadElem {
     position: absolute;
-    font-size:12pt;
-    left:130px;
-    top:0px;
+    font-size: 12pt;
+    left: 130px;
+    top: 0px;
 }
 
 #bottom {
@@ -211,13 +219,13 @@ body {
 
 #inventoryWin {
     position: absolute;
-    left: 726px;
+    left: 723px;
     top: 8px;
     background-color: #ffdd88;
     color: #482008;
     width: 250px;
     height: 168px;
-
+    opacity: .95;
 }
 
 #inventoryWin>#inventoryListElem {

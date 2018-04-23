@@ -1,30 +1,34 @@
 //***********************************************
 function calculateStrength(event) {
     var item, strength = 0;
-    var men = g.goods[g.MERCENARY].quan;
+    var men = g.inventory['MERCENARY'].quan;
 
-    for (item = 0; item < g.goods.length; item++){
-        var q = g.goods[item].quan;
+    for (var key in g.goods) {
+        item = g.inventory[key];
+        var q = item.quan;
         if (q > men){
             q = men;
         }
-        strength += (q * g.goods[item].str);
+        strength += (q * item.str);
     }
-    g.strengthElem.innerHTML = "Strength: " + strength;
+    g.strengthElem.textContent = "Strength: " + strength;
     g.strength = strength;
 }
 
 //***********************************************
 function calculateLoad(event) {
-    var item, load = 0, cap;
-    for (item = 0; item < g.goods.length; item++){
-        load += parseInt(g.goods[item].quan * g.goods[item].weight);
-    }
-    g.loadElem.innerHTML = "Load: " + load;
+    var load = 0, cap = 0;
 
-    cap = (g.goods[g.MERCENARY].quan * 100) + (g.goods[g.DONKEY].quan * 250);
-    g.capacityElem.innerHTML = "Capacity: " + cap;
-    g.menElem.innerHTML = "Men: " + g.goods[g.MERCENARY].quan;
+    for (var key in g.goods) {
+        item = g.inventory[key];
+        load += parseInt(item.quan * item.weight);
+    }
+
+    g.loadElem.textContent = "Load: " + load;
+
+    cap = (g.inventory['MERCENARY'].quan * 100) + (g.inventory['DONKEY'].quan * 400);
+    g.capacityElem.textContent = "Capacity: " + cap;
+    g.menElem.textContent = "Men: " + g.inventory['MERCENARY'].quan;
 
     g.capacity = cap;
     g.load = load;
@@ -104,6 +108,11 @@ function inputString(prompt, callback) {
 }
 
 //***********************************************
+function exposeMap() {
+    g.parchmentMaskCtx.clearRect(g.x / (64) - 2, g.y / (64) - 2, 11, 9);
+}
+
+//***********************************************
 function moveMap(xd, yd, frames) {
     function animLoop(){
         if (frames > 0){
@@ -113,10 +122,10 @@ function moveMap(xd, yd, frames) {
             g.map.drawMap(g.x, g.y);
             g.mapContext.fillStyle = "#DD8800";
             g.mapContext.fillRect(224 - 10, 160 - 10, 20, 20);
+
             requestAnimFrame(animLoop);
         } else {
-//            g.mapContext.fillStyle = "#DD8800";
-//            g.mapContext.fillRect(224 - 10, 160 - 10, 20, 20);
+            exposeMap();
         }
     }
     animLoop();

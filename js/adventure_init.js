@@ -14,6 +14,11 @@ function gameInit()
     calculateStrength();
     calculateLoad();
 
+    jgl.newImage('./resources/images/parchment.png', function(image) {
+        g.parchmentMaskCtx.drawImage(image, 0, 0, 500, 320);
+        exposeMap();
+    });
+
     setTimeout(function(){g.map.drawMap(g.x, g.y)}, 1000);
 
     document.addEventListener( 'mousedown', clickHandler, false );
@@ -41,6 +46,9 @@ function createWindows() {
 
     g.mapContext = g.mapCanvas.getContext("2d");
     g.mapContext.font = "20px _sans";
+
+    g.parchmentMaskCanvas = document.getElementById("parchmentCanvas");
+    g.parchmentMaskCtx = g.parchmentMaskCanvas.getContext("2d");
 }
 
 //*********************************************************
@@ -58,7 +66,18 @@ function createMap(){
     g.img[1] = jgl.newImage('./resources/images/tile1.png');
     g.map.newTile({ index:1, img: g.img[1], x:0, y:0, w:64, h:64 });
 
-    g.map.attachMap({ numColumns:16, numRows:16, tileWidth:64, tileHeight:64, mapData:
+    // Generate map
+    var mapData = [];
+    for (var row = 0; row < 320; row++) {
+        var rowData = [];
+        for (var col = 0; col < 500; col++) {
+            rowData[col] = Math.round(Math.random());
+        }
+        mapData.push(rowData);
+    }
+
+    g.map.attachMap({ numColumns: 500, numRows: 320, tileWidth: 64, tileHeight: 64, mapData: mapData });
+/*
         [
             [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1],
             [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],
@@ -77,21 +96,15 @@ function createMap(){
             [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1],
             [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]
         ]});
-
+*/
     g.map.setPositionOffset(224-32, 160-32); // center of map is positioning hot spot
 }
 
 
 //*********************************************************
 function updateInventory(){
-    var inventory = [];
-    g.goods.forEach(function(item, index) {
-        if (item.quan > 0){
-            inventory.push(item);
-        }
-    });
-
-    inventory.forEach(function(item, index) {
+    for (var key in g.inventory) {
+        var item = g.inventory[key];
         var html = "" +
             "<span id='{{ITEM}}' class='inventoryCell'>" +
             "<span class='label'>{{ITEM}}</span>" +
@@ -99,6 +112,6 @@ function updateInventory(){
             "<span class='weight'>{{WEIGHT}}</span>";
 
         JGL_TEMPLATE.renderTemplateFromString (html, { ITEM: item.type, QUAN: item.quan, WEIGHT: parseInt(item.quan * item.weight) }, inventoryListElem, false);
-    });
+    };
 };
 
