@@ -156,7 +156,7 @@ body {
 #islandMapWin {
     position: absolute;
     background-color: #02a;
-    background: url('../resources/images/islandmap.png');
+    background: url('../resources/images/map.png');
     top: 0px;
     left: 476px;
     width: 500px;
@@ -170,7 +170,7 @@ body {
     left: 476px;
     width: 500px;
     height: 320px;
-    opacity: 0.8
+    opacity: 1.0
 }
 
 #capacityElem {
